@@ -1,0 +1,105 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start        
+     4                                  ;Se citeste de
+     5                                  ;Se citeste de la tastatura un cuvant (sir de caractere de maxim 20 de caractere) si un numar reprezentat pe un octet. Daca numarul este impar se cere criptarea cuvantului prin adunarea la fiecare caracter a numarul
+     6                                  
+     7                                  extern exit, scanf, printf               
+     8                                  import exit msvcrt.dll 
+     9                                  import scanf msvcrt.dll 
+    10                                  import printf msvcrt.dll
+    11                                     
+    12                                  segment data use32 class=data
+    13 00000000 00<rept>                   cuvant times 21 db 0 
+    14 00000015 <res 00000004>             n resd 1 
+    15 00000019 257300                     format_cuv db '%s', 0
+    16 0000001C 256400                     format_numar db '%d', 0
+    17 0000001F 6165696F75                 vocale db 'aeiou'
+    18                                     len equ $-vocale
+    19 00000024 00<rept>                   cuvant_afisare times 61 db 0 
+    20                                     
+    21                                  segment code use32 class=code
+    22                                      start:
+    23 00000000 68[00000000]                    push dword cuvant
+    24 00000005 68[19000000]                    push dword format_cuv
+    25 0000000A FF15[00000000]                  call [scanf]
+    26 00000010 83C408                          add esp, 2*4
+    27                                              
+    28 00000013 68[15000000]                    push dword n 
+    29 00000018 68[1C000000]                    push dword format_numar
+    30 0000001D FF15[00000000]                  call [scanf]
+    31 00000023 83C408                          add esp, 2*4
+    32                                          
+    33 00000026 8B0D[15000000]                  mov ecx, [n]
+    34 0000002C D1E9                            shr ecx, 1 
+    35                                          
+    36 0000002E 7265                            jc impar ; cf=1, atunci nr e impar
+    37                                          ;aici cazul in care e par 
+    38                                                  ;Daca numarul este par se cere criptarea cuvantului prin adaugarea dupa fiecare consoana a gruparii "p"+consoana.
+    39 00000030 B915000000                              mov ecx, 21 
+    40 00000035 BE00000000                              mov esi, 0 
+    41 0000003A BF00000000                              mov edi, 0 ; aici cuvantul nou
+    42                                                  
+    43                                                  salt: 
+    44 0000003F 80BE[00000000]00                            cmp byte [esi+cuvant], 0 ; am ajuns la capatul cuvantului
+    45 00000046 7438                                        je afisare_par 
+    46                                                      
+    47 00000048 8A86[00000000]                              mov al, [esi+cuvant]
+    48 0000004E 51                                          push ecx
+    49 0000004F B905000000                                  mov ecx, len
+    50 00000054 BB00000000                                  mov ebx, 0
+    51                                                      verific_vocala:
+    52 00000059 8A93[1F000000]                                  mov dl, [ebx+vocale]
+    53 0000005F 38D0                                            cmp al, dl 
+    54 00000061 7412                                            je nu_e_consoana
+    55 00000063 43                                              inc ebx
+    56 00000064 E2F3                                        loop verific_vocala
+    57                                                      
+    58                                                      ;tratez cazul cand e consoana
+    59 00000066 8887[24000000]                              mov [cuvant_afisare+edi], al ; consoana
+    60 0000006C 47                                          inc edi 
+    61 0000006D C687[24000000]70                            mov [cuvant_afisare+edi], byte 'p' ;adaug p 
+    62 00000074 47                                          inc edi
+    63                                                      
+    64                                                      nu_e_consoana:
+    65                                                      ; aici mereu adaug un caracter nou 
+    66 00000075 8887[24000000]                              mov [cuvant_afisare+edi], al 
+    67 0000007B 47                                          inc edi
+    68 0000007C 46                                          inc esi
+    69 0000007D 59                                          pop ecx
+    70 0000007E E2BF                                    loop salt 
+    71                                                  
+    72                                                  afisare_par:
+    73 00000080 68[24000000]                            push dword cuvant_afisare
+    74 00000085 68[19000000]                            push dword format_cuv
+    75 0000008A FF15[00000000]                          call [printf]
+    76 00000090 83C408                                  add esp, 4*2 
+    77                                                  
+    78 00000093 EB41                                    jmp final
+    79                                          
+    80                                          impar:
+    81                                                  ;Daca numarul este impar se cere criptarea cuvantului prin adunarea la fiecare caracter a numarului citit modulo 20.
+    82 00000095 B915000000                              mov ecx, 21
+    83 0000009A BE00000000                              mov esi, 0 ; indicele cu care parcurg cuvantul
+    84                                                  saritura:
+    85 0000009F 80BE[00000000]00                            cmp byte [esi+cuvant], 0; am ajuns la capatul cuvantului
+    86 000000A6 741B                                        je afisare_impar
+    87                                                      
+    88 000000A8 66A1[15000000]                              mov ax, [n]
+    89 000000AE 66BA0000                                    mov dx, 0 
+    90 000000B2 66BB1400                                    mov bx, 20 
+    91 000000B6 66F7F3                                      div bx 
+    92                                                      ;mov edi, [n]
+    93 000000B9 660196[00000000]                            add [esi+cuvant],dx
+    94 000000C0 46                                          inc esi 
+    95 000000C1 E2DC                                    loop saritura
+    96                                                  
+    97                                                  afisare_impar:
+    98 000000C3 68[00000000]                            push dword cuvant
+    99 000000C8 68[19000000]                            push dword format_cuv
+   100 000000CD FF15[00000000]                          call [printf]
+   101 000000D3 83C408                                  add esp, 2*4
+   102                                                  
+   103                                          final:
+   104 000000D6 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   105 000000D8 FF15[00000000]                  call    [exit]       ; call exit to terminate the program
