@@ -1,0 +1,131 @@
+     1                                  bits 32 
+     2                                  global start        
+     3                                  
+     4                                  
+     5                                  extern exit, scanf, printf           
+     6                                  import exit msvcrt.dll
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll   
+     9                                                            
+    10                                  ;Se citesc mai multe siruri de caractere. Sa se determine daca primul apare ca subsecventa in fiecare din celelalte si sa se dea un mesaj corespunzator.
+    11                                  segment data use32 class=data
+    12 00000000 <res 00000004>              string_principal resd 1
+    13 00000004 257300                      format db '%s', 0
+    14 00000007 <res 00000004>              string_auxiliar resd 1
+    15 0000000B 257300                      format_afisare db '%s', 0
+    16 0000000E <res 00000004>              cuvant resd 1
+    17 00000012 457374652073756273-         mesaj_pozitiv db "Este subsir! ", 0
+    17 0000001B 6972212000         
+    18 00000020 4E7520657374652073-         mesaj_negativ db "Nu este subsir! ", 0
+    18 00000029 7562736972212000   
+    19                                     
+    20                                  
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          ;citim sirul principal
+    24 00000000 68[00000000]                    push string_principal
+    25 00000005 68[04000000]                    push dword format
+    26 0000000A FF15[00000000]                  call [scanf]
+    27 00000010 83C408                          add esp, 2*4 
+    28                                          
+    29                                          repeta: 
+    30 00000013 68[07000000]                        push string_auxiliar
+    31 00000018 68[04000000]                        push dword format
+    32 0000001D FF15[00000000]                      call [scanf]
+    33 00000023 83C408                              add esp, 2*4
+    34                                              
+    35 00000026 803D[07000000]23                    cmp byte [string_auxiliar], '#'
+    36 0000002D 742E                                je final
+    37                                              
+    38 0000002F 68[00000000]                        push string_principal
+    39 00000034 68[07000000]                        push string_auxiliar
+    40 00000039 E827000000                          call verifica
+    41                                              
+    42                                              
+    43 0000003E 83FB01                              cmp ebx,1
+    44 00000041 740D                                je am
+    45 00000043 68[20000000]                        push dword mesaj_negativ
+    46 00000048 FF15[00000000]                      call [printf]
+    47 0000004E EB0B                                jmp doit
+    48                                              am:
+    49 00000050 68[12000000]                            push dword mesaj_pozitiv
+    50 00000055 FF15[00000000]                          call [printf]
+    51                                               
+    52                                              doit:
+    53                                              
+    54                                  
+    55 0000005B EBB6                            jmp repeta
+    56                                          
+    57                                      final:
+    58 0000005D 6A00                            push    dword 0      
+    59 0000005F FF15[00000000]                  call    [exit] 
+    60                                          
+    61                                      ; am:
+    62                                          ; push dword mesaj_pozitiv
+    63                                          ; call [printf]
+    64                                          ; add esp,4
+    65                                          ; ret
+    66                                           
+    67                                      
+    68                                      
+    69                                      ; nu_am:
+    70                                          ; push dword mesaj_negativ
+    71                                          ; call [printf]
+    72                                          ; add esp,4
+    73                                          ; ret
+    74                                       
+    75                                      
+    76                                      verifica:
+    77 00000065 8B7C2404                        mov edi, [esp+4] ; edi=string auxiliar
+    78 00000069 8B742408                        mov esi, [esp+8] ; esi= string principal 
+    79                                            
+    80                                          ;caut prima litera din string-ul principal
+    81 0000006D 8A06                            mov al, [esi]
+    82 0000006F E826000000                      call cauta
+    83 00000074 83FB00                          cmp ebx, 0
+    84 00000077 7420                            je nu_e_subsit
+    85                                        
+    86                                      
+    87 00000079 46                              inc esi
+    88 0000007A 47                              inc edi 
+    89 0000007B BB00000000                      mov ebx, 0
+    90                                          kkk:
+    91 00000080 8A17                                mov dl, [edi]
+    92 00000082 80FA00                              cmp dl, 0
+    93 00000085 7412                                je nu_e_subsit
+    94                                              
+    95 00000087 8A06                                mov al, [esi]
+    96 00000089 38D0                                cmp al, dl 
+    97 0000008B 750C                                jne nu_e_subsit
+    98 0000008D 47                                  inc edi
+    99 0000008E 46                                  inc esi 
+   100 0000008F 803E00                              cmp byte [esi], 0 
+   101 00000092 75EC                                jne kkk
+   102                                              
+   103                                            
+   104                                            
+   105                                      este:
+   106 00000094 BB01000000                      mov ebx, 1
+   107                                          
+   108                                      nu_e_subsit:
+   109 00000099 C3                              ret 
+   110                                          
+   111                                          
+   112                                      cauta:
+   113 0000009A BB00000000                      mov ebx, 0 
+   114                                          ttt:
+   115 0000009F 8A17                                mov dl, [edi]
+   116 000000A1 38D0                                cmp al, dl 
+   117 000000A3 7408                                je exista
+   118 000000A5 47                                  inc edi 
+   119 000000A6 803F00                              cmp byte [edi],0 
+   120 000000A9 75F4                                jne ttt
+   121                                              
+   122 000000AB EB05                            jmp nu_exista
+   123                                          
+   124                                      exista:
+   125 000000AD BB01000000                      mov ebx, 1
+   126                                   
+   127                                          
+   128                                      nu_exista:
+   129 000000B2 C3                              ret
