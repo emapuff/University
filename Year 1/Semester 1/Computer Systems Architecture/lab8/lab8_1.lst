@@ -1,0 +1,43 @@
+     1                                  bits 32
+     2                                  
+     3                                  global start        
+     4                                  
+     5                                  extern exit, scanf, printf              
+     6                                  import exit msvcrt.dll    
+     7                                  import scanf msvcrt.dll
+     8                                  import printf msvcrt.dll
+     9                                  
+    10                                  ; Sa se citeasca de la tastatura un numar in baza 10 si sa se afiseze valoarea acelui numar in baza 16.
+    11                                  segment data use32 class=data
+    12 00000000 00000000                    n dd 0 ; aici vom citi numarul
+    13 00000004 496E74726F64756365-         message db "Introduceti un numar in baza 10: ", 0
+    13 0000000D 746920756E206E756D-
+    13 00000016 617220696E2062617A-
+    13 0000001F 612031303A2000     
+    14 00000026 256400                      format_citire db '%d', 0
+    15 00000029 255800                      format_afisare db '%X',0
+    16                                  
+    17                                  ; our code starts here
+    18                                  segment code use32 class=code
+    19                                      start:
+    20 00000000 31C0                            xor eax, eax
+    21 00000002 68[04000000]                    push dword message
+    22 00000007 FF15[00000000]                  call [printf]
+    23 0000000D 83C404                          add esp, 4
+    24                                          
+    25                                          
+    26 00000010 68[00000000]                    push dword n
+    27 00000015 68[26000000]                    push dword format_citire
+    28 0000001A FF15[00000000]                  call [scanf]
+    29 00000020 83C408                          add esp, 4*2
+    30                                  
+    31                                          
+    32 00000023 A1[00000000]                    mov eax, [n]
+    33                                  
+    34 00000028 50                              push eax 
+    35 00000029 68[29000000]                    push dword format_afisare 
+    36 0000002E FF15[00000000]                  call [printf]
+    37 00000034 83C408                          add esp, 4*2
+    38                                  
+    39 00000037 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    40 00000039 FF15[00000000]                  call    [exit]       ; call exit to terminate the program
