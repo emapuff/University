@@ -6,6 +6,6 @@ My journey through University summed up in projects
 - [🧜🏼‍♀️ Fundamentals of Programming](Year%201/Semester%201/Fundamentals%20of%20Programming/Labs)
 
 ## Semester 2
-- [🌼 Data Structures And Algorithms](Year%201/Semester%202/Data%20Structures%20And%20Algorithms%20)
-- [🌟 Graph Algorithms](Year%201/Semester%202/Graph%20Algorithms%20)
-- [🩻 Object Oriented Programming](Year%201/Semester%202/Object%20Oriented%20Programming%20)
+- [🌼 Data Structures And Algorithms](Year%201/Semester%202/Data%20Structures%20And%20Algorithms)
+- [🌟 Graph Algorithms](Year%201/Semester%202/Graph%20Algorithms)
+- [🩻 Object Oriented Programming](Year%201/Semester%202/Object%20Oriented%20Programming)
