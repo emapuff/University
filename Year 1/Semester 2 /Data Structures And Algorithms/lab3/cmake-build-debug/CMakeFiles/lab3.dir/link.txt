@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/lab3.dir/TAD_Coada_cu_Prioritati/Proiect_C++/App.cpp.o CMakeFiles/lab3.dir/TAD_Coada_cu_Prioritati/Proiect_C++/CP.cpp.o CMakeFiles/lab3.dir/TAD_Coada_cu_Prioritati/Teste/TestExtins.cpp.o CMakeFiles/lab3.dir/TAD_Coada_cu_Prioritati/Teste/TestScurt.cpp.o -o lab3 
