@@ -2,10 +2,10 @@
 My journey through University summed up in projects
 
 ## Semester 1 
-- [🧶 Computer Systems Architecture](Year 1/Semester 1/Computer Systems Architecture)
-- [🧜🏼‍♀️ Fundamentals of Programming](Year 1/Semester 1/Fundamentals of Programming/Labs)
+- [🧶 Computer Systems Architecture](Year%201/Semester%201/Computer%20Systems%20Architecture)
+- [🧜🏼‍♀️ Fundamentals of Programming](Year%201/Semester%201/Fundamentals%20of%20Programming/Labs)
 
 ## Semester 2
-- [🌼 Data Structures And Algorithms](Year 1/Semester 2/Data Structures And Algorithms)
-- [🌟 Graphs Algorithms](Year 1/Semester 2/Graph Algorithms)
-- [🩻 Object Oriented Programming](Year 1/Semester 2/Object Oriented Programming)
+- [🌼 Data Structures And Algorithms](Year%201/Semester%202/Data%20Structures%20And%20Algorithms)
+- [🌟 Graphs Algorithms](Year%201/Semester%202/Graph%20Algorithms)
+- [🩻 Object Oriented Programming](Year%201/Semester%202/Object%20Oriented%20Programming)
