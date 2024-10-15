@@ -1,3 +1,0 @@
-/mnt/c/Users/emato/CLionProjects/oop/lab6_7_vector_dinamic/cmake-build-debug/CMakeFiles/lab6_7.dir
-/mnt/c/Users/emato/CLionProjects/oop/lab6_7_vector_dinamic/cmake-build-debug/CMakeFiles/edit_cache.dir
-/mnt/c/Users/emato/CLionProjects/oop/lab6_7_vector_dinamic/cmake-build-debug/CMakeFiles/rebuild_cache.dir

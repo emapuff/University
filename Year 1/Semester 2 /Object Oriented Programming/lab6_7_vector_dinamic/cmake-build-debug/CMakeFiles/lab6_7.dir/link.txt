@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/lab6_7.dir/main.cpp.o CMakeFiles/lab6_7.dir/Locatari.cpp.o CMakeFiles/lab6_7.dir/RepoLocatari.cpp.o CMakeFiles/lab6_7.dir/ServiceLocatari.cpp.o CMakeFiles/lab6_7.dir/ui.cpp.o CMakeFiles/lab6_7.dir/teste.cpp.o -o lab6_7 
