@@ -9,5 +9,3 @@ My journey through University summed up in projects
 - [🌼 Data Structures And Algorithms](Year%201/Semester%202/Data%20Structures%20And%20Algorithms)
 - [🌟 Graph Algorithms](Year%201/Semester%202/Graph%20Algorithms)
 - [🩻 Object Oriented Programming](Year%201/Semester%202/Object%20Oriented%20Programming)
-
-
