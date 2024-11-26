@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.socialnetworklabseven.UserProfileController">
+
+    <!-- Main HBox to contain left, center, and right sections -->
+    <HBox spacing="20.0" alignment="CENTER" style="-fx-background-color: #f8f0e3;" prefWidth="1000" prefHeight="600">
+
+        <!-- Left: Profile and Friends Section -->
+        <VBox spacing="10.0" style="-fx-background-color: #f8f0e3;" alignment="CENTER">
+            <Label fx:id="userNameLabel" text="User Name" style="-fx-font-size: 18; -fx-text-fill: #800020;" />
+            <Label fx:id="userEmailLabel" text="Email" style="-fx-font-size: 14; -fx-text-fill: #800020;" />
+            <Separator />
+            <Label text="Friends:" style="-fx-font-size: 16;" />
+            <TableView fx:id="friendsTable">
+                <columns>
+                    <TableColumn fx:id="friendNameColumn" text="Name" />
+                    <TableColumn fx:id="friendEmailColumn" text="Email" />
+                </columns>
+            </TableView>
+            <Button fx:id="deleteFriendButton" text="Delete Friend" onAction="#handleDeleteFriend" />
+        </VBox>
+
+        <!-- Center: Messages Section -->
+        <VBox spacing="10.0" style="-fx-background-color: #f8f0e3;" alignment="CENTER">
+            <Label text="Messages" style="-fx-font-size: 16; -fx-text-fill: #800020;" />
+            <TableView fx:id="messagesTable">
+                <columns>
+                    <TableColumn fx:id="messageFromColumn" text="From" />
+                </columns>
+            </TableView>
+            <Button fx:id="openMessageBoxButton" text="Open Message Box" onAction="#handleOpenMessageBox" />
+        </VBox>
+
+        <!-- Right: Notifications and Other Users Section -->
+        <VBox spacing="20.0" style="-fx-background-color: #f8f0e3;" alignment="CENTER">
+            <!-- Notifications Section -->
+            <VBox spacing="10.0" alignment="CENTER">
+                <Label text="Notifications" style="-fx-font-size: 16; -fx-text-fill: #800020;" />
+                <ListView fx:id="notificationsList" />
+                <Button fx:id="acceptRequestButton" text="Accept Request" onAction="#handleAcceptRequest" />
+                <Label fx:id="noPendingRequestsLabel" text="No pending friend requests" visible="false"/>
+            </VBox>
+
+            <Separator />
+
+            <!-- Other Users Section -->
+            <VBox spacing="10.0" alignment="CENTER">
+                <Label text="Other Users:" style="-fx-font-size: 16; -fx-text-fill: #800020;" />
+                <TableView fx:id="otherUsersTable">
+                    <columns>
+                        <TableColumn fx:id="otherUserNameColumn" text="Name" />
+                        <TableColumn fx:id="otherUserEmailColumn" text="Email" />
+                    </columns>
+                </TableView>
+            </VBox>
+            <HBox spacing="10.0" alignment="CENTER">
+                <Button fx:id="addFriendButton" text="Add Friend" onAction="#handleAddFriend" />
+            </HBox>
+        </VBox>
+
+    </HBox>
+</AnchorPane>

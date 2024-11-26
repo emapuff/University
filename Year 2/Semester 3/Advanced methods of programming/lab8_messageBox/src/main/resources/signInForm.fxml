@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.socialnetworklabseven.SignInController" style="-fx-background-color: #f8f0e3;" minWidth="400" minHeight="400">
+    <children>
+        <!-- Title Label -->
+        <Label text="Sign In" style="-fx-font-size: 24; -fx-text-fill: #800020;" />
+
+        <!-- Email Input -->
+        <TextField fx:id="emailField" promptText="Email" style="-fx-background-color: #ffffff; -fx-border-color: #800020; -fx-prompt-text-fill: #800020;" prefWidth="300"/>
+
+        <!-- First Name Input -->
+        <TextField fx:id="firstNameField" promptText="First Name" style="-fx-background-color: #ffffff; -fx-border-color: #800020; -fx-prompt-text-fill: #800020;" prefWidth="300"/>
+
+        <!-- Last Name Input -->
+        <TextField fx:id="lastNameField" promptText="Last Name" style="-fx-background-color: #ffffff; -fx-border-color: #800020; -fx-prompt-text-fill: #800020;" prefWidth="300"/>
+
+        <!-- Password Input -->
+        <PasswordField fx:id="passwordField" promptText="Password" style="-fx-background-color: #ffffff; -fx-border-color: #800020; -fx-prompt-text-fill: #800020;" prefWidth="300"/>
+
+        <!-- Sign In Button -->
+        <Button text="Sign In" onAction="#handleSignIn" style="-fx-background-color: #800020; -fx-text-fill: #ffffff; -fx-font-size: 16;" prefWidth="200"/>
+    </children>
+</VBox>
+
