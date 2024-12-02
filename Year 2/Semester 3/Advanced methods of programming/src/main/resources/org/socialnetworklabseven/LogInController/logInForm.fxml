@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #F8F0E3; -fx-padding: 20;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.socialnetworklabseven.ui.LogInController">
+    <children>
+        <Label text="Log In" style="-fx-font-size: 20px; -fx-text-fill: #800020;" />
+        <TextField fx:id="emailField" promptText="Email" style="-fx-background-color: white; -fx-border-color: #800020; -fx-text-fill: #800020;" prefWidth="200"/>
+        <PasswordField fx:id="passwordField" promptText="Password" style="-fx-background-color: white; -fx-border-color: #800020; -fx-text-fill: #800020;" prefWidth="200"/>
+        <Button text="Log In" onAction="#handleLogIn" style="-fx-background-color: #800020; -fx-text-fill: white;" />
+    </children>
+</VBox>
