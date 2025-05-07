@@ -1,0 +1,16 @@
+
+Imbunatatirea datelor de intrare prin:
+- "curatarea pozei":
+    > cresterea luminozitatii
+    > reframe si croptare ( in cazul in care marginile pozei contin elemente zgomotoase)
+    > cresterea contastului dintre culorile inchise si deschise pentru a iesi textul in evidenta
+      (sau chiar renuntarea la culoare)
+    > rotirea imaginii intr-o pozitie orizontala
+    -> worst case scenario: daca inputul nu indeplineste unele conditii de calitate,
+                            cerem utilizatorului sa reincarce poza
+                            (pe modelul BT Pay, fundal alb, incadrare, etc)
+
+- invatarea literelor ciudate:
+    > daca avem un set mare de date in care unele litere sunt scrise intr-un anumit fel de un numar mare
+    de persoane, putem sa ii spunem algoritmului "hei, de fapt asa se scrie litera x" (ma gandesc aici la
+    cazul cu litera S de mana)
