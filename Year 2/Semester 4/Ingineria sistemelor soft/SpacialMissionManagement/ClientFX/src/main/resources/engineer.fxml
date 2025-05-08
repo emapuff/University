@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ro.mpp.controllers.EngineerController"
+            stylesheets="@engineer.css"
+            prefWidth="700" prefHeight="500">
+
+    <top>
+        <Label text="Engineer Dashboard - Assigned Missions"
+               styleClass="title-label"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <VBox spacing="20" alignment="CENTER" padding="20">
+            <TableView fx:id="assignmentTable" prefHeight="300" prefWidth="650"/>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="Upload File" onAction="#handleUploadFile"/>
+                <Label fx:id="statusLabel" text="" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

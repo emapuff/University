@@ -1,0 +1,30 @@
+.title-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 15 0 15 0;
+    -fx-alignment: center;
+    -fx-text-fill: #2e2e2e;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+.combo-box {
+    -fx-pref-width: 150px;
+}

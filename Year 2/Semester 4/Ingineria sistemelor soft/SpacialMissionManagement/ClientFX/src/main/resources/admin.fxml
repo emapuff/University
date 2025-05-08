@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ro.mpp.controllers.AdminController"
+            stylesheets="@admin.css"
+            prefWidth="800" prefHeight="600">
+
+    <top>
+        <Label text="Admin Dashboard - Space Agency"
+               styleClass="title-label"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <VBox spacing="15" alignment="CENTER" padding="20">
+            <HBox spacing="20" alignment="CENTER">
+                <VBox spacing="10">
+                    <Label text="All Engineers"/>
+                    <TableView fx:id="engineerTable" prefWidth="300" prefHeight="200"/>
+                </VBox>
+
+                <VBox spacing="10">
+                    <Label text="All Missions"/>
+                    <TableView fx:id="missionTable" prefWidth="300" prefHeight="200"/>
+                </VBox>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Assign Mission:"/>
+                <ComboBox fx:id="engineerCombo" promptText="Select Engineer"/>
+                <ComboBox fx:id="missionCombo" promptText="Select Mission"/>
+                <Button text="Assign" onAction="#handleAssignMission"/>
+            </HBox>
+
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Pending Assignments to Validate"/>
+                <TableView fx:id="assignmentTable" prefWidth="600" prefHeight="200"/>
+                <Button text="Validate Selected" onAction="#handleValidateAssignment"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

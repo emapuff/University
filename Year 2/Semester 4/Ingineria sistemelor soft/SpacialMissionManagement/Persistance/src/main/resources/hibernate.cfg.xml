@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 5.3//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-5.3.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- JDBC properties -->
+        <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+        <property name="hibernate.connection.url">jdbc:sqlite:spatial_missions.db</property>
+
+        <!-- Dialect -->
+        <property name="hibernate.dialect">org.sqlite.hibernate.dialect.SQLiteDialect</property>
+        <!-- Hibernate settings -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Register entity classes -->
+        <mapping class="ro.mpp.User"/>
+        <mapping class="ro.mpp.Mission"/>
+        <mapping class="ro.mpp.Assigned"/>
+
+    </session-factory>
+</hibernate-configuration>
