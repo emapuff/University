@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ro.mpp.controllers.LogInController"
+            prefWidth="400" prefHeight="250"
+            stylesheets="@style.css">
+
+    <VBox spacing="15" alignment="CENTER" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20"
+          AnchorPane.topAnchor="30" AnchorPane.bottomAnchor="30">
+        <Text text="Space Agency Login" styleClass="title"/>
+
+        <TextField fx:id="emailField" promptText="Email" />
+        <PasswordField fx:id="passwordField" promptText="Password" />
+
+        <Button text="Log In" onAction="#handleLogin" prefWidth="120"/>
+    </VBox>
+</AnchorPane>
