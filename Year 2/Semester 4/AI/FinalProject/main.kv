@@ -1,0 +1,79 @@
+<MainLayout@MDBoxLayout>:
+    orientation: "vertical"
+    md_bg_color: 1, 0.9, 0.95, 1
+    padding: "20dp"
+    spacing: "20dp"
+
+    MDLabel:
+        text: "PowderPuff - Analiza tenului tău la un click distanță"
+        halign: "center"
+        theme_text_color: "Primary"
+        font_style: "H5"
+
+    MDCard:
+        id: image_container
+        orientation: "vertical"
+        size_hint: None, None
+        size: "300dp", "300dp"
+        radius: [30, 30, 30, 30]
+        elevation: 8
+        pos_hint: {"center_x": 0.5}
+        md_bg_color: 1, 1, 1, 1
+
+        Image:
+            id: image_preview
+            source: ""
+            allow_stretch: True
+            keep_ratio: True
+
+    MDRaisedButton:
+        text: "Selectează imagine"
+        pos_hint: {"center_x": 0.5}
+        on_release: root.open_filechooser()
+
+    MDRaisedButton:
+        text: "Analizează"
+        pos_hint: {"center_x": 0.5}
+        md_bg_color: 1, 0.6, 0.8, 1
+        text_color: 1, 1, 1, 1
+        on_release: root.show_recommendations()
+
+    MDRaisedButton:
+        text: "Închide aplicația"
+        md_bg_color: 1, 0, 0, 1
+        pos_hint: {"center_x": 0.5}
+        on_release: root.close_app()
+
+<MainScreen>:
+    MainLayout:
+
+<RecommendationScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "10dp"
+        md_bg_color: 1, 0.9, 0.95, 1
+
+        MDLabel:
+            id: detected_problem
+            text: "Problemă detectată"
+            halign: "center"
+            font_style: "H6"
+
+        ScrollView:
+            MDBoxLayout:
+                id: recommendation_content_box
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "10dp"
+                spacing: "20dp"
+
+        MDRaisedButton:
+            text: "Înapoi"
+            pos_hint: {"center_x": 0.5}
+            md_bg_color: 1, 0.6, 0.8, 1
+            text_color: 1, 1, 1, 1
+            on_release: app.root.current = "main"
+
+
